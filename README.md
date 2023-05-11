@@ -1,2 +1,2 @@
 <img src="./img/png/Calculator Intro.png" alt="Calculator Intro">
-# Calculator
+<h1> Calculator application
