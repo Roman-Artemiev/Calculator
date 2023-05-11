@@ -1,0 +1,436 @@
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    -ms-user-select: none; 
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    user-select: none; 
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Calculator Style Start */
+
+.header__wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.calculator{
+    position: relative;
+    width: 400px;
+    height: 650px;
+    background: #000;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 30px;
+}
+
+
+/* Menu Style Start */
+
+.menu__icon{
+    z-index: 5;
+    display: flex;
+    position: relative;
+    width: 32px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.bar__short, .bar__long, .menu__icon::before, .menu__icon::after {
+    left: 0;
+    position: absolute;
+    height: 3px;
+    transition: all 0.4s ease 0;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: 0.4s;
+}
+
+.menu__icon::before, .menu__icon::after {
+    content: '';
+}
+
+.menu__icon::before {
+    top: 0;
+    width: 100%;
+}
+
+.menu__icon::after {
+    bottom: 0;
+    width: 70%;
+}
+
+.menu__icon .bar__short{
+    width: 70%;
+    top: 30%;   
+}
+
+.menu__icon .bar__long {
+    bottom: 27%;
+    width: 100%;
+}
+
+.menu__icon._active .bar__short, .menu__icon._active::after{
+    display: none;
+}
+
+.menu__icon._active .bar__long{
+    transform: rotate(-45deg);
+    background-color: #000000;
+}
+.menu__icon._active::before {
+    top: 14px;
+    transform: rotate(45deg);
+    background-color: #000000;
+}
+
+.menu__body._active {
+    left: 0;
+}
+
+.menu__body {
+    width: 75%;
+    height: 100%;
+    left: -1000000%;
+    position: fixed;
+    bottom: 0;
+    background: #D8D8D8;
+    border-radius: 18px 0px 0px 18px;
+    z-index: 4;
+    padding: 20px 30px;
+}
+
+.menu__title{
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+    padding-top: 80px;
+    padding-bottom: 15px;
+}
+
+.menu__line {
+    width: 2px;
+    height: 34px;
+    overflow: auto;
+    border-radius: 8px;
+    background-color: #1A5AFF;
+    margin-right: 8px;
+}
+
+.menu__calculator__type-pic{
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+}
+
+.menu__calculator__type__title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+}
+
+.menu__calculator__type {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.menu__toggle {
+    position: absolute;
+    display: flex;
+    justify-content: left;
+    bottom: 15px;
+}
+
+.button {
+    background-image: url(../../img/png/toggle__bg__dark.png);
+    background-size: cover;
+    width: 130px;
+    height: 46px;
+    border-radius: 200px;
+    cursor: pointer;
+    position: relative;
+}
+
+.button::before {
+    position: absolute;
+    content: '';
+    background: #ffffff;
+    background-image: url(../../img/svg/toggle__on-off.svg);
+    background-size: 22px 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 36px;
+    border-radius: 200px;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+input:checked + .button {
+    background-image: url(../../img/png/toggle__bg__white.png);
+    background-size: cover;
+}
+
+input:checked + .button::before {
+    transform: translateX(80px);
+}
+
+input {
+    display: none;
+}
+
+/* Menu Style End */
+
+
+/* Calculator White Theme Start */
+
+.calculator._white-theme{
+    background: #e0e0e0;
+    transition: 0.8s;
+}
+
+.calculator._white-theme .bar__short,
+ .calculator._white-theme .bar__long,
+  .calculator._white-theme .menu__icon::before,
+   .calculator._white-theme .menu__icon::after {
+    background-color: #000000;
+}
+
+.calculator._white-theme .menu__icon._active .bar__long,
+.calculator._white-theme .menu__icon._active::before {
+    background-color: #ffffff;
+}
+
+
+.calculator._white-theme .calculator__type__title {
+    color: rgba(0, 0, 0, 1);
+}
+
+
+.calculator._white-theme .menu__body {
+    background: #333;
+}
+
+.calculator._white-theme .menu__title {
+    color: #e7e7e7;
+    transition: 0.8s;
+}
+
+
+.calculator._white-theme .white-theme {
+    fill: #FFFFFF;
+    transition: 0.8s;
+}
+
+.calculator._white-theme .menu__calculator__type__title {
+    color: #FFFFFF;
+    transition: 0.8s;
+}
+
+.calculator._white-theme .btn__main {
+    background: #FFAC5F;
+    transition: 0.8s;
+}
+
+.calculator._white-theme .equal__result{
+    color: rgba(0, 0, 0, 0.9);
+
+}
+
+body._white-theme {
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    transition: 0.8s;
+}
+
+body._white-theme .value__num {
+    color: #000;
+}
+
+body._white-theme .value, body._white-theme .result {
+    color: #000000;
+}
+
+body._white-theme .value__options,  body._white-theme .resul__options{
+    background: #e0e0e0;
+    color: rgba(39, 39, 39, 0.658);
+}
+
+body._white-theme .value__default, body._white-theme .result__default{
+    color: rgb(0, 0, 0);
+}
+
+body._white-theme .value{
+    color: rgb(0, 0, 0);
+}
+
+
+/* Calculator White Theme End */
+
+
+.calculator__type__title{
+    font-family: 'Inter';
+    font-size: 18px;
+    line-height: 19px;
+    color: rgba(255, 255, 255, 1);
+    opacity: 0.6;
+    margin-left: 20px;
+}
+
+.value__wrapper_1 {
+    margin: 40px 0 20px 0;
+}
+
+.value__wrapper_1, .value__wrapper_2  {
+    position: relative;
+}
+
+.output, .value__default, .result__default {
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px;
+    line-height: 38px;
+    color: #FFFFFF;
+    text-align: left;
+    overflow-x: auto;
+    overflow: hidden;
+    height: 40px;
+    max-width: 100%;  
+    margin-bottom: 10px;
+}
+
+.value__default {
+    position: absolute;
+    top: 0px;
+}
+
+.result, .result__default {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.result__default {
+    position: absolute;
+    top: 0;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 20px;
+}
+
+.value__options, .resul__options{
+    background-color: #000000;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.buttons__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.buttons__row:last-child {
+    margin-bottom: 0px;
+    display: flex;
+    align-items: self-end;
+    /* justify-content: center; */
+}
+
+.btn {
+    font-family: 'Lato';
+    border-radius: 10px;
+    color: #FFFFFF;
+    width: 70px;
+    height: 70px;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_0{
+    width: 160px; /* 250 */ /* 160 */
+    height: 70px;
+}
+
+.btn__default{
+    background-color: #626461;
+    font-size: 38px;
+    line-height: 46px;
+}
+
+.btn__default:hover {
+    background-color: #8b8b8b;
+}
+
+.btn__main {
+    background: #889CCE;
+    font-size: 40px;
+    line-height: 48px;
+}
+
+.btn__main:hover{
+    background: #62739c;
+}
+
+.margin__right {
+    margin-right: 20px;
+}
+
